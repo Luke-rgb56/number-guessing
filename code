@@ -1,0 +1,28 @@
+print("Think of a number between one and 1000")
+
+outputQuestion = 'Is this your number?'
+inputQuestion = "\n\
+1 = My number is less than this. \n\
+2 = This is my number! \n\
+3 = My number is greater than this."
+
+
+upperLimit = 1000
+lowerLimit = 1
+
+limitChange = round((upperLimit - lowerLimit)/2)
+limitChangeInteger = str(limitChange)
+
+question =  outputQuestion + ' ' + limitChangeInteger + inputQuestion
+
+userAnswer = int(input(question))
+
+while userAnswer != 2:
+    if userAnswer == 1:
+        upperLimit = limitChange
+        limitChange = round((upperLimit - lowerLimit)/2)
+        question =  outputQuestion + ' ' + limitChangeInteger + inputQuestion
+        print(question)
+    else:
+        print("You didn't pick a number between 1 and 3!")
+        exit()
