@@ -33,7 +33,7 @@ while userAnswer != 2:
         limitChangeString = str(limitChange)
         question =  outputQuestion + ' ' + limitChangeString + inputQuestion
         userAnswer = int(input(question))
-        turns += 1
+        guess += 1
         guessString = str(guess)
     else:
         print("\n \nYou didn't pick a number between 1 and 3!")
