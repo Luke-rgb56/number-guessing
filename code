@@ -1,4 +1,4 @@
-print("Think of a number between one and 1000")
+print("Think of a number between one and 100 \n")
 
 outputQuestion = 'Is this your number?'
 inputQuestion = "\n\
@@ -6,23 +6,40 @@ inputQuestion = "\n\
 2 = This is my number! \n\
 3 = My number is greater than this."
 
-
-upperLimit = 1000
-lowerLimit = 1
+guess = 0 
+upperLimit = 100
+lowerLimit = 0
 
 limitChange = round((upperLimit - lowerLimit)/2)
-limitChangeInteger = str(limitChange)
+limitChangeString = str(limitChange)
+guessString = str(guess)
 
-question =  outputQuestion + ' ' + limitChangeInteger + inputQuestion
+question =  outputQuestion + ' ' + limitChangeString + inputQuestion
 
 userAnswer = int(input(question))
 
 while userAnswer != 2:
     if userAnswer == 1:
         upperLimit = limitChange
-        limitChange = round((upperLimit - lowerLimit)/2)
-        question =  outputQuestion + ' ' + limitChangeInteger + inputQuestion
-        print(question)
+        limitChange = round((limitChange + lowerLimit)/2)
+        limitChangeString = str(limitChange)
+        question =  outputQuestion + ' ' + limitChangeString + inputQuestion
+        userAnswer = int(input(question))
+        guess += 1
+        guessString = str(guess)
+    elif userAnswer == 3:
+        lowerLimit = limitChange
+        limitChange = round((limitChange + upperLimit)/2)
+        limitChangeString = str(limitChange)
+        question =  outputQuestion + ' ' + limitChangeString + inputQuestion
+        userAnswer = int(input(question))
+        turns += 1
+        guessString = str(guess)
     else:
-        print("You didn't pick a number between 1 and 3!")
-        exit()
+        print("\n \nYou didn't pick a number between 1 and 3!")
+        userAnswer = int(input(('Pick again ' + inputQuestion))) 
+
+
+print('I guessed your number')
+print('It took ' + guessString + ' guesses to get your number')
+
